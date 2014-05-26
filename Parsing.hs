@@ -1,8 +1,4 @@
--- type Parser = String -> Tree
--- type Parser = String -> (Tree, String)
---
--- module Parsing where
--- module Parsing where
+module Parsing where
 import Data.Char
 import Control.Monad
 import Debug.Trace
@@ -175,26 +171,18 @@ term = do
 
 
 
-
--- module Main where
-main :: IO ()
-main = do
-	print $ parse term "(a b)"
-	print $ parse term "(\\x . (f x))"
-	print $ parse term "(\\x . (\\y . (y (f x))))"
-	print $ parse term "(f (b x))"
-	print $ parse term "(f (b 5))"
-
-
-
-
-
-data Term = Constant Consta | Variable Var | Application (Term, Term) | Lambda (Var, Term) deriving Show
+data Term = Constant Consta | Variable Var | Application (Term, Term) | Lambda (Var, Term) deriving (Show, Eq)
 type Consta = Int
 type Var = String
 
 
 
 
-
+-- main :: IO ()
+-- main = do
+-- 	print $ parse term "(a b)"
+-- 	print $ parse term "(\\x . (f x))"
+-- 	print $ parse term "(\\x . (\\y . (y (f x))))"
+-- 	print $ parse term "(f (b x))"
+-- 	print $ parse term "(f (b 5))"
 
