@@ -14,9 +14,11 @@ t4 = TestCase (assertEqual "for parse '(f (b x))'" [(Application (Variable "f",A
 
 t5 = TestCase (assertEqual "for parse '(f (b 5))'" [(Application (Variable "f",Application (Variable "b",Constant 5)),"")] (parse term "(f (b 5))"))
 
+t6 = TestCase (assertEqual "for parse '(f (b 5) f)'" [] (parse term "(f (b 5) f)"))
+
 
 main :: IO Counts
 main =
-	runTestTT $ TestList[t1, t2, t3, t4, t5]
+	runTestTT $ TestList[t1, t2, t3, t4, t5, t6]
 
 
