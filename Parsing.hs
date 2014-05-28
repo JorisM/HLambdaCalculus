@@ -146,7 +146,7 @@ lambda = do
 constant :: Parser Term
 constant = do
 	i <- nat
-	return (Constant i)
+	return (Constant (Num i))
 
 variable :: Parser Term
 variable = do
@@ -171,7 +171,8 @@ term = do
 
 
 
-data Term = Constant Consta | Variable Var | Application (Term, Term) | Lambda (Var, Term) deriving (Show, Eq)
+data Term = Constant Const | Variable Var | Application (Term, Term) | Lambda (Var, Term) deriving (Show, Eq)
+data Const = Num Int | Add | Succ | IsZero deriving (Show, Eq)
 type Consta = Int
 type Var = String
 
